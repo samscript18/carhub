@@ -1,6 +1,6 @@
 import Logo from "../asset/logo2.png";
 import { footerLinks } from "../utils/data";
-import { Links } from "../utils/types";
+import { LinksProps } from "../utils/types";
 import Image from "next/image";
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
               All Rights Reserved &copy;
             </p>
           </div>
-          {footerLinks.map(({ title, links }: Links, index) => {
+          {footerLinks.map(({ title, links }: LinksProps, index) => {
             return (
               <div key={index} className="basis-[20%] sm:mt-0 xs:mt-8">
                 <h3 className="font-bold">{title}</h3>
