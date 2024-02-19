@@ -32,7 +32,7 @@ const SearchManufacturer = ({
         type="text"
         placeholder="Volkswagen"
         className="xs:w-[100%] sm:w-[25vw] bg-light-white text-sm rounded-l-full px-20 py-3 outline-none"
-        value={manufacturer}
+        value={manufacturer.toLocaleLowerCase()}
         onChange={handleChange}
       />
       <div className="absolute top-[20%] left-[12%]">

@@ -5,15 +5,25 @@ import SearchManufacturer from "./SearchManufacturer";
 import SearchButton from "./SearchButton";
 import Image from "next/image";
 import { FormEventHandler, useState } from "react";
+import { fetchCars } from "@/services/CarApi";
+import { CarProps } from "@/utils/types";
 
 const Searchbar = () => {
   const [manufacturer, setManufacturer] = useState<string>("");
   const [model, setModel] = useState<string>("");
+  const [cars, setCars] = useState<Array<CarProps> | undefined>();
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    console.log(manufacturer, model);
+    try {
+      const { data } = await fetchCars(`?make=${manufacturer}&model=${model}`);
+      setCars(data);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   };
+
+  console.log(cars);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -27,7 +37,7 @@ const Searchbar = () => {
             type="text"
             placeholder="Tiguan"
             className="xs:w-[100%] sm:w-[25vw] bg-light-white text-sm rounded-r-full px-20 py-3 outline-none"
-            value={model}
+            value={model.toLocaleLowerCase()}
             onChange={(event) => setModel(event.target.value)}
           />
           <div className="absolute top-[15%] left-[11%]">
