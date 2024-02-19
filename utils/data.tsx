@@ -1,3 +1,5 @@
+import { CarProps } from "./types";
+
 export const footerLinks = [
   {
     title: "About",
@@ -5,7 +7,7 @@ export const footerLinks = [
       { title: "How it works", url: "/" },
       { title: "Featured", url: "/" },
       { title: "Partnership", url: "/" },
-      { title: "Bussiness Relation", url: "/" },
+      { title: "Business Relation", url: "/" },
     ],
   },
   {
@@ -73,29 +75,62 @@ export const manufacturersData = [
 ];
 
 export const yearsOfProductionData = [
-  { title: "Year", value: "" },
-  { title: "2015", value: "2015" },
-  { title: "2016", value: "2016" },
-  { title: "2017", value: "2017" },
-  { title: "2018", value: "2018" },
-  { title: "2019", value: "2019" },
-  { title: "2020", value: "2020" },
-  { title: "2021", value: "2021" },
-  { title: "2022", value: "2022" },
-  { title: "2023", value: "2023" },
+  { title: "Year", year: "" },
+  { title: "2015", year: "2015" },
+  { title: "2016", year: "2016" },
+  { title: "2017", year: "2017" },
+  { title: "2018", year: "2018" },
+  { title: "2019", year: "2019" },
+  { title: "2020", year: "2020" },
+  { title: "2021", year: "2021" },
+  { title: "2022", year: "2022" },
+  { title: "2023", year: "2023" },
 ];
 
 export const fuelsData = [
   {
     title: "Fuel",
-    value: "",
+    fuelType: "fuel",
   },
   {
     title: "Gas",
-    value: "Gas",
+    fuelType: "gas",
   },
   {
     title: "Electricity",
-    value: "Electricity",
+    fuelType: "electricity",
   },
 ];
+
+export const calculateCarRent = (city_mpg: number, year: number) => {
+  const basePricePerDay = 50; // Base rental price per day in dollars
+  const mileageFactor = 0.1; // Additional rate per mile driven
+  const ageFactor = 0.05; // Additional rate per year of vehicle age
+
+  // Calculate additional rate based on mileage and age
+  const mileageRate = city_mpg * mileageFactor;
+  const ageRate = (new Date().getFullYear() - year) * ageFactor;
+
+  // Calculate total rental rate per day
+  const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
+
+  return rentalRatePerDay.toFixed(0);
+};
+
+// export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+//   const url = new URL("https://cdn.imagin.studio/getimage");
+//   const { make, model, year } = car;
+
+//   url.searchParams.append(
+//     "customer",
+//     process.env.NEXT_PUBLIC_IMAGIN_API_KEY || ""
+//   );
+//   url.searchParams.append("make", make);
+//   url.searchParams.append("modelFamily", model.split(" ")[0]);
+//   url.searchParams.append("zoomType", "fullscreen");
+//   url.searchParams.append("modelYear", `${year}`);
+//   // url.searchParams.append('zoomLevel', zoomLevel);
+//   url.searchParams.append("angle", `${angle}`);
+
+//   return `${url}`;
+// };

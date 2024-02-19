@@ -1,7 +1,6 @@
 "use client";
 
-import { SearchBar } from "@/components";
-import { yearsOfProductionData, fuelsData } from "@/utils/data";
+import { CarCard, SearchBar } from "@/components";
 import { CarProps } from "@/utils/types";
 import { useState } from "react";
 
@@ -19,40 +18,14 @@ const CarsDetails = () => {
             Explore the cars you might like
           </h3>
         </div>
-        <div className="w-full flex xs:flex-col sm:flex-row justify-between items-center my-10">
-          <div className="mr-[15rem]">
-            <SearchBar setCars={setCars} />
-          </div>
-          <div className="w-full flex justify-between items-center xs:mt-6 sm:mt-0">
-            <select
-              name="Fuel"
-              id="Fuel"
-              className="w-full p-2 mr-6 bg-white border border-gray-100 outline-none rounded-lg shadow-md"
-            >
-              {fuelsData.map(({ title, value }) => {
-                return (
-                  <option key={title} value={value}>
-                    {title}
-                  </option>
-                );
-              })}
-            </select>
-            <select
-              name="Year"
-              id="Year"
-              className="w-full p-2 mr-6 bg-white border border-gray-100 outline-none rounded-lg shadow-md"
-            >
-              {yearsOfProductionData.map(({ value, title }) => {
-                return (
-                  <option key={title} value={value}>
-                    {title}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+        <div className="w-full my-10">
+          <SearchBar setCars={setCars} />
         </div>
-        <div className="w-full"></div>
+        <div className="w-full grid xs:grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {cars?.map((car, index) => {
+            return <CarCard key={index} {...car} />;
+          })}
+        </div>
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ export interface LinksProps {
 export interface CustomButtonProps {
   text: string;
   styles: string;
-  // btnType: string;
+  rightIcon?: string;
 }
 export interface FilteredManufacturersProps {
   id: number;
@@ -34,4 +34,13 @@ export interface CarProps {
   model: string;
   transmission: string;
   year: number;
+}
+export interface CarCardProps {
+  model: string;
+  make: string;
+  mpg?: number;
+  transmission: string;
+  year: number;
+  drive: string;
+  city_mpg: number;
 }
