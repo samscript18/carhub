@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import carLogo from "../asset/car-logo.svg";
+import carLogo from "@/asset/car-logo.svg";
 import { manufacturersData } from "@/utils/data";
 import { ChangeEventHandler, EventHandler, useState } from "react";
 import {

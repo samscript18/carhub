@@ -1,7 +1,13 @@
+"use client";
+
 import { SearchBar } from "@/components";
 import { yearsOfProductionData, fuelsData } from "@/utils/data";
+import { CarProps } from "@/utils/types";
+import { useState } from "react";
 
-const Cars = () => {
+const CarsDetails = () => {
+  const [cars, setCars] = useState<Array<CarProps> | undefined>();
+
   return (
     <section className="my-16">
       <div className="w-full md:px-12 sm:px-8 xs:px-4">
@@ -15,7 +21,7 @@ const Cars = () => {
         </div>
         <div className="w-full flex xs:flex-col sm:flex-row justify-between items-center my-10">
           <div className="mr-[15rem]">
-            <SearchBar />
+            <SearchBar setCars={setCars} />
           </div>
           <div className="w-full flex justify-between items-center xs:mt-6 sm:mt-0">
             <select
@@ -46,8 +52,9 @@ const Cars = () => {
             </select>
           </div>
         </div>
+        <div className="w-full"></div>
       </div>
     </section>
   );
 };
-export default Cars;
+export default CarsDetails;

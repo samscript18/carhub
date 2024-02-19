@@ -1,4 +1,4 @@
-import HeroImg from "../asset/hero.png";
+import HeroImg from "@/asset/hero.png";
 import CustomButton from "../components/CustomButton";
 import Image from "next/image";
 

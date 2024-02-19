@@ -18,6 +18,9 @@ export interface SearchManufacturerProps {
   manufacturer: string;
   setManufacturer: (manufacturer: string) => void;
 }
+export interface SearchBarProps {
+  setCars: (cars: CarProps[] | undefined) => void;
+}
 export interface CarProps {
   city_mpg: number;
   class: string;

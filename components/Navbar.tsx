@@ -1,4 +1,4 @@
-import Logo from "../asset/logo2.png";
+import Logo from "@/asset/logo2.png";
 import CustomButton from "./CustomButton";
 import Image from "next/image";
 

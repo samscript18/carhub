@@ -1,17 +1,16 @@
 "use client";
 
-import Car from "../asset/model-icon.png";
+import Car from "@/asset/model-icon.png";
 import SearchManufacturer from "./SearchManufacturer";
 import SearchButton from "./SearchButton";
 import Image from "next/image";
 import { FormEventHandler, useState } from "react";
 import { fetchCars } from "@/services/CarApi";
-import { CarProps } from "@/utils/types";
+import { SearchBarProps } from "@/utils/types";
 
-const Searchbar = () => {
+const Searchbar = ({ setCars }: SearchBarProps) => {
   const [manufacturer, setManufacturer] = useState<string>("");
   const [model, setModel] = useState<string>("");
-  const [cars, setCars] = useState<Array<CarProps> | undefined>();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -22,8 +21,6 @@ const Searchbar = () => {
       console.log(error.message);
     }
   };
-
-  console.log(cars);
 
   return (
     <form onSubmit={handleSubmit}>

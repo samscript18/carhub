@@ -1,5 +1,5 @@
 import Image from "next/image";
-import searchButton from "../asset/magnifying-glass.svg";
+import searchButton from "@/asset/magnifying-glass.svg";
 
 const SearchButton = () => {
   return (

@@ -1,6 +1,6 @@
-import Logo from "../asset/logo2.png";
-import { footerLinks } from "../utils/data";
-import { LinksProps } from "../utils/types";
+import Logo from "@/asset/logo2.png";
+import { footerLinks } from "@/utils/data";
+import { LinksProps } from "@/utils/types";
 import Image from "next/image";
 
 const Footer = () => {
@@ -41,7 +41,9 @@ const Footer = () => {
         <div className="w-full border-gray-100 border-t pt-8">
           <div className="flex sm:flex-row xs:flex-col justify-start items-center md:px-12 sm:px-8 xs:px-4">
             <div className="w-full xs:text-center sm:text-start">
-              <h3 className="font-light">@2023 CarHub.All Rights Reserved</h3>
+              <h3 className="font-light">
+                &copy;2023 CarHub.All Rights Reserved
+              </h3>
             </div>
             <div className="w-full flex sm:justify-end xs:justify-center items-end sm:mt-0 xs:mt-3">
               <h3 className="text-gray-500 font-light mr-4">Privacy Policy</h3>
