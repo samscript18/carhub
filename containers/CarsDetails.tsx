@@ -28,7 +28,7 @@ const CarsDetails = () => {
           </div>
         ) : (
           <div>
-            {cars ? (
+            {cars.length > 0 ? (
               <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                 {cars?.map((car, index) => {
                   console.log(car);
