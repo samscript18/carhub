@@ -20,6 +20,7 @@ export interface SearchManufacturerProps {
 }
 export interface SearchBarProps {
   setCars: (cars: CarProps[] | undefined) => void;
+  setIsLoading: (IsLoading: boolean) => void;
 }
 export interface CarProps {
   city_mpg: number;

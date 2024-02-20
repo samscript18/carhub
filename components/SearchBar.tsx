@@ -9,7 +9,7 @@ import { fetchCars } from "@/services/CarApi";
 import { SearchBarProps } from "@/utils/types";
 import { yearsOfProductionData, fuelsData } from "@/utils/data";
 
-const Searchbar = ({ setCars }: SearchBarProps) => {
+const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
   const [manufacturer, setManufacturer] = useState<string>("");
   const [model, setModel] = useState<string>("");
   const [fuelType, setFuelType] = useState<string>("");
@@ -17,15 +17,26 @@ const Searchbar = ({ setCars }: SearchBarProps) => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    console.log(manufacturer, model, fuelType, year);
+    if (manufacturer || model) {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchCars(
+          `?make=${manufacturer}&model=${model}&fuel_type=${fuelType}&year=${year}`
+        );
 
-    try {
-      const { data } = await fetchCars(
-        `?make=${manufacturer}&model=${model}&fuel_type=${fuelType}&year=${year}`
-      );
-      setCars(data);
-    } catch (error: any) {
-      console.log(error.message);
+        if (data.length > 0) {
+          setCars(data);
+          setIsLoading(false);
+        } else {
+          setCars(undefined);
+          setIsLoading(false);
+        }
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    } else {
+      setIsLoading(false);
+      // setCars(undefined);
     }
   };
 
@@ -87,4 +98,4 @@ const Searchbar = ({ setCars }: SearchBarProps) => {
     </form>
   );
 };
-export default Searchbar;
+export default SearchBar;
