@@ -5,7 +5,7 @@ import { CarProps } from "@/utils/types";
 import { useState } from "react";
 
 const CarsDetails = () => {
-  const [cars, setCars] = useState<Array<CarProps> | CarProps[]>([]);
+  const [cars, setCars] = useState<CarProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
