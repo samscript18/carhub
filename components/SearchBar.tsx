@@ -41,17 +41,17 @@ const Searchbar = ({ setCars }: SearchBarProps) => {
             <input
               type="text"
               placeholder="Tiguan"
-              className="xs:w-[100%] sm:w-[25vw] bg-light-white text-sm rounded-r-full px-20 py-3 outline-none"
+              className="xs:w-[100%] sm:w-[25vw] bg-light-white text-sm rounded-r-full xs:px-10 sm:px-20 py-3 outline-none"
               value={model.toLocaleLowerCase()}
               onChange={(event) => setModel(event.target.value)}
             />
-            <div className="absolute top-[15%] left-[11%]">
+            <div className="absolute top-[15%] xs:left-[6%] sm:left-[11%]">
               <Image src={Car} className="w-[25px] h-[25px]" alt="car-logo" />
             </div>
           </div>
           <SearchButton />
         </div>
-        <div className="w-[35%] flex justify-between items-center xs:mt-6 sm:mt-0">
+        <div className="xs:w-full sm:w-[35%] flex justify-between items-center xs:mt-6 sm:mt-0">
           <select
             name="Fuel"
             id="Fuel"

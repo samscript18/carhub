@@ -21,7 +21,7 @@ const CarsDetails = () => {
         <div className="w-full my-10">
           <SearchBar setCars={setCars} />
         </div>
-        <div className="w-full grid xs:grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {cars?.map((car, index) => {
             return <CarCard key={index} {...car} />;
           })}

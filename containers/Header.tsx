@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <header>
-      <div className="w-full md:px-12 sm:px-8 xs:px-4">
+    <header className="xs:overflow-x-hidden md:overflow-x-visible">
+      <div className="w-full md:px-12 sm:px-8 xs:px-4 ">
         <div className="flex md:flex-row xs:flex-col justify-start items-center">
           <div className="md:max-w-[500px] pt-6 mr-12">
             <h1 className="sm:text-[55px] xs:text-[45px] font-bold font-inter">
