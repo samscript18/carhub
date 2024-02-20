@@ -5,7 +5,7 @@ import { CarProps } from "@/utils/types";
 import { useState } from "react";
 
 const CarsDetails = () => {
-  const [cars, setCars] = useState<Array<CarProps> | undefined>();
+  const [cars, setCars] = useState<CarProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
@@ -31,6 +31,8 @@ const CarsDetails = () => {
             {cars ? (
               <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                 {cars?.map((car, index) => {
+                  console.log(car);
+
                   return <CarCard key={index} {...car} />;
                 })}
               </div>

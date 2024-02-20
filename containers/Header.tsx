@@ -24,7 +24,12 @@ const Header = () => {
             />
           </div>
           <div className="relative flex-1 md:mt-0 xs:mt-16">
-            <Image src={HeroImg} className="max-w-full" alt="Hero-Img" />
+            <Image
+              src={HeroImg}
+              priority
+              className="max-w-full"
+              alt="Hero-Img"
+            />
             <div className="absolute md:-top-[39%] md:-right-[60%] xs:-top-[20%] xs:-right-[10%] bg-heroBg bg-repeat-round md:w-[80vw] md:h-[590px] xs:w-full xs:h-[253px] -z-10" />
           </div>
         </div>

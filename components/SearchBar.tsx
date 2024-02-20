@@ -28,7 +28,7 @@ const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
           setCars(data);
           setIsLoading(false);
         } else {
-          setCars(undefined);
+          setCars([]);
           setIsLoading(false);
         }
       } catch (error: any) {
@@ -36,7 +36,7 @@ const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
       }
     } else {
       setIsLoading(false);
-      // setCars(undefined);
+      // setCars([]);
     }
   };
 

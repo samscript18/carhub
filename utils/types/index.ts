@@ -19,7 +19,7 @@ export interface SearchManufacturerProps {
   setManufacturer: (manufacturer: string) => void;
 }
 export interface SearchBarProps {
-  setCars: (cars: CarProps[] | undefined) => void;
+  setCars: (cars: CarProps[]) => void;
   setIsLoading: (IsLoading: boolean) => void;
 }
 export interface CarProps {
