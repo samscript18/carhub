@@ -36,7 +36,6 @@ const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
       }
     } else {
       setIsLoading(false);
-      // setCars([]);
     }
   };
 
