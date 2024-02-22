@@ -1,24 +1,25 @@
 import CustomButton from "./CustomButton";
+import CarDetails from "./CarDetails";
 import Image from "next/image";
 import { CarCardProps } from "@/utils/types";
 import { calculateCarRent } from "@/utils/data";
-import Car from "@/asset/hero.png";
-import tireImg from "@/asset/tire.svg";
-import steeringImg from "@/asset/steering-wheel.svg";
-import gasImg from "@/asset/gas.svg";
-import arrowImg from "@/asset/right-arrow.svg";
+import {
+  HeroImg,
+  tireImg,
+  steeringImg,
+  gasImg,
+  arrowImg,
+} from "@/public/asset";
+import { useGlobalContext } from "@/context";
 
-const CarCard = ({
-  model,
-  make,
-  transmission,
-  year,
-  drive,
-  city_mpg,
-}: CarCardProps) => {
+const CarCard = ({ car }: CarCardProps) => {
+  const { setIsModalOpen, isModalOpen, setCar } = useGlobalContext();
+  const { city_mpg, drive, make, model, transmission, year } = car;
   const carRent = calculateCarRent(city_mpg, year);
+  const carID = model;
+
   return (
-    <div className="w-full h-auto p-4 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-2xl duration-300">
+    <div className="w-full max-h-[352px] p-4 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-2xl duration-300">
       <h2 className="text-[22px] leading-[26px] font-bold capitalize">
         {make} {model}
       </h2>
@@ -33,7 +34,7 @@ const CarCard = ({
       </p>
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={Car}
+          src={HeroImg}
           alt="car model"
           fill
           priority
@@ -68,10 +69,16 @@ const CarCard = ({
             text="View More"
             styles="w-full py-[16px] rounded-full bg-primary-blue text-white text-[14px] leading-[17px] font-bold"
             rightIcon={arrowImg}
-            // handleClick={() => setIsOpen(true)}
+            handleClick={() => {
+              if (carID === model) {
+                setCar(car);
+              }
+              setIsModalOpen(true);
+            }}
           />
         </div>
       </div>
+      {isModalOpen && <CarDetails />}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import Logo from "@/asset/logo2.png";
 import CustomButton from "./CustomButton";
 import Image from "next/image";
+import { Logo } from "@/public/asset";
 
 const Navbar = () => {
   return (

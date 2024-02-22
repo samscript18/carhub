@@ -1,30 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import carLogo from "@/asset/car-logo.svg";
-import { manufacturersData } from "@/utils/data";
-import { ChangeEventHandler, EventHandler, useState } from "react";
-import {
-  FilteredManufacturersProps,
-  SearchManufacturerProps,
-} from "@/utils/types";
+import { carLogo } from "@/public/asset";
+import { useGlobalContext } from "@/context";
 
-const SearchManufacturer = ({
-  manufacturer,
-  setManufacturer,
-}: SearchManufacturerProps) => {
-  const [filteredManufacturers, setFilteredManufacturers] = useState<
-    Array<FilteredManufacturersProps>
-  >([]);
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setManufacturer(event.target.value);
-    const newManufacturers = manufacturersData.filter((item) => {
-      return item.title
-        .toLocaleLowerCase()
-        .includes(manufacturer.toLocaleLowerCase());
-    });
-    setFilteredManufacturers(newManufacturers);
-  };
+const SearchManufacturer = () => {
+  const { manufacturer, handleChange } = useGlobalContext();
 
   return (
     <div className="relative">

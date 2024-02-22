@@ -1,9 +1,14 @@
 import { CustomButtonProps } from "@/utils/types";
 import Image from "next/image";
 
-const CustomButton = ({ text, styles, rightIcon }: CustomButtonProps) => {
+const CustomButton = ({
+  text,
+  styles,
+  rightIcon,
+  handleClick,
+}: CustomButtonProps) => {
   return (
-    <button className={styles}>
+    <button className={styles} onClick={handleClick}>
       <div className={rightIcon ? "flex justify-center items-center" : ""}>
         <span className="w-full">{text}</span>
         {rightIcon && (

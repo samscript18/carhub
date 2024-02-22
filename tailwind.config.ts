@@ -26,15 +26,15 @@ const config: Config = {
         grey: "#747A88",
       },
       backgroundImage: {
-        pattern: "url(../asset/pattern.png)",
-        heroBg: "url(../asset/hero-bg.png)",
+        pattern: "url(../public/asset/pattern.png)",
+        heroBg: "url(../public/asset/hero-bg.png)",
       },
     },
     screens: {
       xs: "300px",
       sm: "768px",
       md: "1020px",
-      lg: "1200px",
+      lg: "1300px",
     },
   },
   plugins: [],

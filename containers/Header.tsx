@@ -1,4 +1,4 @@
-import HeroImg from "@/asset/hero.png";
+import { HeroImg } from "@/public/asset";
 import CustomButton from "../components/CustomButton";
 import Image from "next/image";
 
@@ -30,7 +30,7 @@ const Header = () => {
               className="max-w-full"
               alt="Hero-Img"
             />
-            <div className="absolute md:-top-[39%] md:-right-[60%] xs:-top-[20%] xs:-right-[10%] bg-heroBg bg-repeat-round md:w-[80vw] md:h-[590px] xs:w-full xs:h-[253px] -z-10" />
+            <div className="absolute md:-top-[39%] md:-right-[80%] sm:-top-[15%] sm:right-[0%] xs:-top-[23%] xs:-right-[10%] bg-heroBg bg-repeat-round md:w-[90vw] md:h-[590px] sm:w-full sm:h-full xs:w-full xs:h-full -z-10" />
           </div>
         </div>
       </div>

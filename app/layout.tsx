@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { AppProvider } from "@/context/index";
 
 const manrope = Manrope({ style: ["normal"], subsets: ["greek"] });
 
@@ -16,11 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${manrope.className} overflow-x-hidden`}>
-        <Navbar />
-        <main>{children}</main>
-      </body>
-    </html>
+    <AppProvider>
+      <html lang="en">
+        <body className={`${manrope.className} md:overflow-x-hidden`}>
+          <Navbar />
+          <main>{children}</main>
+        </body>
+      </html>
+    </AppProvider>
   );
 }

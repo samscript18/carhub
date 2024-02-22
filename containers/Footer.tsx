@@ -1,6 +1,6 @@
-import Logo from "@/asset/logo2.png";
 import { footerLinks } from "@/utils/data";
 import { LinksProps } from "@/utils/types";
+import { Logo } from "@/public/asset";
 import Image from "next/image";
 
 const Footer = () => {

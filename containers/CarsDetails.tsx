@@ -1,12 +1,23 @@
 "use client";
 
-import { CarCard, Loading, SearchBar } from "@/components";
+import {
+  CarCard,
+  Loading,
+  SearchBar,
+  CarDetails,
+  CustomButton,
+} from "@/components";
 import { CarProps } from "@/utils/types";
-import { useState } from "react";
+import { useGlobalContext } from "@/context";
+import { useEffect, useState } from "react";
 
 const CarsDetails = () => {
-  const [cars, setCars] = useState<CarProps[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { cars, isLoading, isModalOpen } = useGlobalContext();
+  const [carsData, setCarsData] = useState<CarProps[]>([]);
+
+  useEffect(() => {
+    setCarsData(cars.slice(0, 15));
+  }, [cars]);
 
   return (
     <section className="my-16">
@@ -20,7 +31,7 @@ const CarsDetails = () => {
           </h3>
         </div>
         <div className="w-full my-10">
-          <SearchBar setCars={setCars} setIsLoading={setIsLoading} />
+          <SearchBar />
         </div>
         {isLoading ? (
           <div className="flex justify-center items-center my-20">
@@ -30,8 +41,8 @@ const CarsDetails = () => {
           <div>
             {cars.length > 0 ? (
               <div className="w-full grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                {cars?.map((car, index) => {
-                  return <CarCard key={index} {...car} />;
+                {carsData?.map((car, index) => {
+                  return <CarCard key={index} car={car} />;
                 })}
               </div>
             ) : (
@@ -43,6 +54,24 @@ const CarsDetails = () => {
             )}
           </div>
         )}
+        {carsData.length > 15 ? (
+          <div className="flex justify-center items-center mt-8">
+            <CustomButton
+              text="Show Less"
+              styles="text-white py-[10px] bg-primary-blue font-light min-w-[130px] rounded-full outline-none"
+              handleClick={() => setCarsData(cars.slice(0, 15))}
+            />
+          </div>
+        ) : (
+          <div className="flex justify-center items-center mt-8">
+            <CustomButton
+              text="Show More"
+              styles="text-white py-[10px] bg-primary-blue font-light min-w-[130px] rounded-full outline-none"
+              handleClick={() => setCarsData(cars.slice(0, 30))}
+            />
+          </div>
+        )}
+        {isModalOpen && <CarDetails />}
       </div>
     </section>
   );

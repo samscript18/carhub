@@ -1,52 +1,26 @@
-"use client";
-
-import Car from "@/asset/model-icon.png";
+import { CarImg } from "@/public/asset";
 import SearchManufacturer from "./SearchManufacturer";
 import SearchButton from "./SearchButton";
 import Image from "next/image";
-import { FormEventHandler, useState } from "react";
-import { fetchCars } from "@/services/CarApi";
-import { SearchBarProps } from "@/utils/types";
 import { yearsOfProductionData, fuelsData } from "@/utils/data";
+import { useGlobalContext } from "@/context";
 
-const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
-  const [manufacturer, setManufacturer] = useState<string>("");
-  const [model, setModel] = useState<string>("");
-  const [fuelType, setFuelType] = useState<string>("");
-  const [year, setYear] = useState<string>("");
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-    if (manufacturer || model) {
-      setIsLoading(true);
-      try {
-        const { data } = await fetchCars(
-          `?make=${manufacturer}&model=${model}&fuel_type=${fuelType}&year=${year}`
-        );
-
-        if (data.length > 0) {
-          setCars(data);
-          setIsLoading(false);
-        } else {
-          setCars([]);
-          setIsLoading(false);
-        }
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    } else {
-      setIsLoading(false);
-    }
-  };
+const SearchBar = () => {
+  const {
+    model,
+    fuelType,
+    year,
+    setModel,
+    setFuelType,
+    setYear,
+    handleSubmit,
+  } = useGlobalContext();
 
   return (
     <form onSubmit={handleSubmit}>
       <div className=" flex xs:flex-col sm:flex-row justify-between items-center">
         <div className="relative w-full flex justify-start items-center">
-          <SearchManufacturer
-            manufacturer={manufacturer}
-            setManufacturer={setManufacturer}
-          />
+          <SearchManufacturer />
           <div className="relative">
             <input
               type="text"
@@ -56,7 +30,11 @@ const SearchBar = ({ setCars, setIsLoading }: SearchBarProps) => {
               onChange={(event) => setModel(event.target.value)}
             />
             <div className="absolute top-[15%] xs:left-[6%] sm:left-[11%]">
-              <Image src={Car} className="w-[25px] h-[25px]" alt="car-logo" />
+              <Image
+                src={CarImg}
+                className="w-[25px] h-[25px]"
+                alt="car-logo"
+              />
             </div>
           </div>
           <SearchButton />

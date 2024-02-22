@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export interface LinksProps {
   title: string;
   links: {
@@ -6,25 +8,19 @@ export interface LinksProps {
   }[];
 }
 export interface CustomButtonProps {
+  id?: string;
   text: string;
   styles: string;
   rightIcon?: string;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 export interface FilteredManufacturersProps {
   id: number;
   title: string;
 }
-export interface SearchManufacturerProps {
-  manufacturer: string;
-  setManufacturer: (manufacturer: string) => void;
-}
-export interface SearchBarProps {
-  setCars: (cars: CarProps[]) => void;
-  setIsLoading: (IsLoading: boolean) => void;
-}
 export interface CarProps {
   city_mpg: number;
-  class: string;
+  class?: string;
   combination_mpg: number;
   cylinders: number;
   displacement: number;
@@ -37,11 +33,5 @@ export interface CarProps {
   year: number;
 }
 export interface CarCardProps {
-  model: string;
-  make: string;
-  mpg?: number;
-  transmission: string;
-  year: number;
-  drive: string;
-  city_mpg: number;
+  car: CarProps;
 }
