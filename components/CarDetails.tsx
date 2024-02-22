@@ -6,9 +6,9 @@ const CarDetails = () => {
   const { setIsModalOpen, car } = useGlobalContext();
 
   return (
-    <div className="fixed inset-0 top-0 right-0 w-full h-screen bg-[#222] opacity-[0.1] flex justify-center items-start z-[100]">
+    <div className="fixed inset-0 top-0 right-0 w-full h-screen bg-[#222] opacity-[0.2] flex justify-center items-start z-[100]">
       <div
-        className=" relative w-[30vw] h-auto mt-3 flex flex-col bg-white p-4 rounded-lg z-[100]
+        className=" relative md:w-[30vw] sm:w-[50vw] xs:w-[80vw] h-auto mt-3 xs:my-auto flex flex-col bg-white p-4 rounded-lg z-[100]
       "
       >
         <div className="relative flex justify-end items-end">

@@ -47,7 +47,7 @@ const CarsDetails = () => {
               </div>
             ) : (
               <div className="w-full flex justify-center items-center my-20">
-                <h1 className="text-[28px] leading-[32px] font-bold">
+                <h1 className="text-[28px] leading-[32px] font-bold text-center">
                   Sorry 😥,cars cannot be found!
                 </h1>
               </div>
