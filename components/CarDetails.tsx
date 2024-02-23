@@ -6,10 +6,7 @@ const CarDetails = () => {
   const { setIsModalOpen, car } = useGlobalContext();
 
   return (
-    <div
-      style={{ background: "rgba(0,0,0,0.2)" }}
-      className="fixed inset-0 top-0 right-0 w-full h-screen flex justify-center items-start z-[100]"
-    >
+    <div className="fixed inset-0 top-0 right-0 w-full h-screen bg-[rgba(0,0,0,0.1)] flex justify-center items-start z-[100]">
       <div
         className=" relative md:w-[30vw] sm:w-[50vw] xs:w-[80vw] h-auto mt-3 xs:my-auto flex flex-col bg-white p-4 rounded-lg z-[100]
       "
